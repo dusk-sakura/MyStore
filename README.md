@@ -1,1 +1,1 @@
-# MyJournal
+# MyStore
