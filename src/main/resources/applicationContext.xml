@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+        https://www.springframework.org/schema/beans/spring-beans.xsd" >
+<!--    <bean id="userDao" class="com.bom.dao.impl.UserDaoImpl" scope="prototype" >-->
+<!--        <property name="username" value="bom"></property>-->
+<!--        <property name="age" value="21"></property>-->
+<!--    </bean>-->
+    <bean id="userDao" class="com.bom.dao.impl.UserDaoImpl" scope="prototype" >
+        <property name="stringList" >
+            <list>
+                <value>aaa</value>
+                <value>bbb</value>
+                <value>ccc</value>
+            </list>
+        </property>
+        <property name="userMap" >
+            <map>
+                <entry key="user1" value-ref="user1"></entry>
+                <entry key="user2" value-ref="user2"></entry>
+            </map>
+        </property>
+        <property name="properties" >
+            <props>
+                <prop key="p1">p1</prop>
+                <prop key="p2">p2</prop>
+                <prop key="p3">p3</prop>
+            </props>
+        </property>
+    </bean>
+    <bean id="user1" class="com.bom.pojo.User">
+        <property name="name" value="111"></property>
+        <property name="password" value="111"></property>
+    </bean>
+    <bean id="user2" class="com.bom.pojo.User">
+        <property name="name" value="222"></property>
+        <property name="password" value="222"></property>
+    </bean>
+<!--    <bean id="userService" class="com.bom.dao.impl.UserServiceImpl"set注入>-->
+<!--        <property name="userDao" ref="userDao"></property>-->
+<!--    </bean>-->
+
+<!--    构造方法注入-->
+    <bean id="userService" class="com.bom.dao.impl.UserServiceImpl">
+        <constructor-arg name="userDao" ref="userDao"></constructor-arg>
+    </bean>
+</beans>
